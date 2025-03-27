@@ -29,42 +29,7 @@ const Header: React.FC = () => {
 
   return (
     <>
-      {/* Top bar with ministry name and language selector */}
-      <div className="bg-krishi-primary py-2 px-4 md:px-8 flex justify-between items-center">
-        <div className="flex items-center space-x-2 text-white">
-          <img src="https://images.unsplash.com/photo-1516820208784-270b250306aa?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=40" alt="Emblem" className="h-8" />
-          <span className="text-sm md:text-base font-medium">Ministry of Skill Development and Entrepreneurship</span>
-        </div>
-        <div className="relative">
-          <button 
-            onClick={toggleLanguageDropdown}
-            className="flex items-center space-x-2 text-white bg-krishi-secondary px-3 py-1 rounded"
-          >
-            <Globe size={16} />
-            <span className="text-sm hidden md:inline">{language === 'english' ? 'English' : 'ಕನ್ನಡ'}</span>
-            <ChevronDown size={16} />
-          </button>
-          
-          {isLanguageDropdownOpen && (
-            <div className="language-dropdown animate-fade-in">
-              <div 
-                className={`language-option ${language === 'english' ? 'bg-krishi-accent text-krishi-primary' : ''}`}
-                onClick={() => handleLanguageChange('english')}
-              >
-                English
-              </div>
-              <div 
-                className={`language-option ${language === 'kannada' ? 'bg-krishi-accent text-krishi-primary' : ''}`}
-                onClick={() => handleLanguageChange('kannada')}
-              >
-                ಕನ್ನಡ
-              </div>
-            </div>
-          )}
-        </div>
-      </div>
-
-      {/* Main navigation */}
+      {/* Main navigation with language selector at the top-right */}
       <header className="bg-white py-3 px-4 md:px-8 shadow-sm">
         <div className="container mx-auto flex justify-between items-center">
           {/* Logo */}
@@ -76,38 +41,69 @@ const Header: React.FC = () => {
             </div>
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-2">
-            <Link to="/" className="px-3 py-2 text-krishi-primary hover:text-krishi-dark font-medium">{t('home')}</Link>
-            <Link to="/dashboard" className="px-3 py-2 text-krishi-primary hover:text-krishi-dark font-medium">{t('dashboard')}</Link>
-            <Link to="/equipment" className="px-3 py-2 text-krishi-primary hover:text-krishi-dark font-medium">{t('equipment')}</Link>
-            <Link to="/about" className="px-3 py-2 text-krishi-primary hover:text-krishi-dark font-medium">{t('about')}</Link>
-            
-            <div className="ml-6 flex space-x-3">
-              {!user ? (
-                <>
-                  <Button asChild variant="outline" className="border-krishi-primary text-krishi-primary hover:bg-krishi-primary hover:text-white">
-                    <Link to="/login">{t('login')}</Link>
-                  </Button>
-                  <Button asChild className="bg-krishi-primary hover:bg-krishi-dark text-white">
-                    <Link to="/signup">{t('signup')}</Link>
-                  </Button>
-                </>
-              ) : (
-                <Button onClick={handleLogout} variant="outline" className="border-krishi-primary text-krishi-primary hover:bg-krishi-primary hover:text-white">
-                  Logout
-                </Button>
+          <div className="flex items-center">
+            {/* Language Selector */}
+            <div className="relative mr-4">
+              <button 
+                onClick={toggleLanguageDropdown}
+                className="flex items-center space-x-2 text-krishi-primary bg-krishi-accent px-3 py-1 rounded"
+              >
+                <Globe size={16} />
+                <span className="text-sm hidden md:inline">{language === 'english' ? 'English' : 'ಕನ್ನಡ'}</span>
+                <ChevronDown size={16} />
+              </button>
+              
+              {isLanguageDropdownOpen && (
+                <div className="language-dropdown animate-fade-in">
+                  <div 
+                    className={`language-option ${language === 'english' ? 'bg-krishi-accent text-krishi-primary' : ''}`}
+                    onClick={() => handleLanguageChange('english')}
+                  >
+                    English
+                  </div>
+                  <div 
+                    className={`language-option ${language === 'kannada' ? 'bg-krishi-accent text-krishi-primary' : ''}`}
+                    onClick={() => handleLanguageChange('kannada')}
+                  >
+                    ಕನ್ನಡ
+                  </div>
+                </div>
               )}
             </div>
-          </nav>
 
-          {/* Mobile menu button */}
-          <button 
-            onClick={toggleMenu}
-            className="md:hidden text-krishi-primary hover:text-krishi-dark"
-          >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+            {/* Desktop Navigation */}
+            <nav className="hidden md:flex items-center space-x-2">
+              <Link to="/" className="px-3 py-2 text-krishi-primary hover:text-krishi-dark font-medium">{t('home')}</Link>
+              <Link to="/dashboard" className="px-3 py-2 text-krishi-primary hover:text-krishi-dark font-medium">{t('dashboard')}</Link>
+              <Link to="/equipment" className="px-3 py-2 text-krishi-primary hover:text-krishi-dark font-medium">{t('equipment')}</Link>
+              <Link to="/about" className="px-3 py-2 text-krishi-primary hover:text-krishi-dark font-medium">{t('about')}</Link>
+              
+              <div className="ml-6 flex space-x-3">
+                {!user ? (
+                  <>
+                    <Button asChild variant="outline" className="border-krishi-primary text-krishi-primary hover:bg-krishi-primary hover:text-white">
+                      <Link to="/login">{t('login')}</Link>
+                    </Button>
+                    <Button asChild className="bg-krishi-primary hover:bg-krishi-dark text-white">
+                      <Link to="/signup">{t('signup')}</Link>
+                    </Button>
+                  </>
+                ) : (
+                  <Button onClick={handleLogout} variant="outline" className="border-krishi-primary text-krishi-primary hover:bg-krishi-primary hover:text-white">
+                    Logout
+                  </Button>
+                )}
+              </div>
+            </nav>
+
+            {/* Mobile menu button */}
+            <button 
+              onClick={toggleMenu}
+              className="md:hidden text-krishi-primary hover:text-krishi-dark"
+            >
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
       </header>
 
