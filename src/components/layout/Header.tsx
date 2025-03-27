@@ -42,35 +42,6 @@ const Header: React.FC = () => {
           </Link>
 
           <div className="flex items-center">
-            {/* Language Selector */}
-            <div className="relative mr-4">
-              <button 
-                onClick={toggleLanguageDropdown}
-                className="flex items-center space-x-2 text-krishi-primary bg-krishi-accent px-3 py-1 rounded"
-              >
-                <Globe size={16} />
-                <span className="text-sm hidden md:inline">{language === 'english' ? 'English' : 'ಕನ್ನಡ'}</span>
-                <ChevronDown size={16} />
-              </button>
-              
-              {isLanguageDropdownOpen && (
-                <div className="language-dropdown animate-fade-in">
-                  <div 
-                    className={`language-option ${language === 'english' ? 'bg-krishi-accent text-krishi-primary' : ''}`}
-                    onClick={() => handleLanguageChange('english')}
-                  >
-                    English
-                  </div>
-                  <div 
-                    className={`language-option ${language === 'kannada' ? 'bg-krishi-accent text-krishi-primary' : ''}`}
-                    onClick={() => handleLanguageChange('kannada')}
-                  >
-                    ಕನ್ನಡ
-                  </div>
-                </div>
-              )}
-            </div>
-
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-2">
               <Link to="/" className="px-3 py-2 text-krishi-primary hover:text-krishi-dark font-medium">{t('home')}</Link>
@@ -78,7 +49,7 @@ const Header: React.FC = () => {
               <Link to="/equipment" className="px-3 py-2 text-krishi-primary hover:text-krishi-dark font-medium">{t('equipment')}</Link>
               <Link to="/about" className="px-3 py-2 text-krishi-primary hover:text-krishi-dark font-medium">{t('about')}</Link>
               
-              <div className="ml-6 flex space-x-3">
+              <div className="ml-6 flex space-x-3 items-center">
                 {!user ? (
                   <>
                     <Button asChild variant="outline" className="border-krishi-primary text-krishi-primary hover:bg-krishi-primary hover:text-white">
@@ -87,11 +58,71 @@ const Header: React.FC = () => {
                     <Button asChild className="bg-krishi-primary hover:bg-krishi-dark text-white">
                       <Link to="/signup">{t('signup')}</Link>
                     </Button>
+                    
+                    {/* Language Selector - Moved next to signup button */}
+                    <div className="relative ml-3">
+                      <button 
+                        onClick={toggleLanguageDropdown}
+                        className="flex items-center space-x-2 text-krishi-primary bg-krishi-accent px-3 py-1 rounded"
+                      >
+                        <Globe size={16} />
+                        <span className="text-sm hidden md:inline">{language === 'english' ? 'English' : 'ಕನ್ನಡ'}</span>
+                        <ChevronDown size={16} />
+                      </button>
+                      
+                      {isLanguageDropdownOpen && (
+                        <div className="language-dropdown animate-fade-in">
+                          <div 
+                            className={`language-option ${language === 'english' ? 'bg-krishi-accent text-krishi-primary' : ''}`}
+                            onClick={() => handleLanguageChange('english')}
+                          >
+                            English
+                          </div>
+                          <div 
+                            className={`language-option ${language === 'kannada' ? 'bg-krishi-accent text-krishi-primary' : ''}`}
+                            onClick={() => handleLanguageChange('kannada')}
+                          >
+                            ಕನ್ನಡ
+                          </div>
+                        </div>
+                      )}
+                    </div>
                   </>
                 ) : (
-                  <Button onClick={handleLogout} variant="outline" className="border-krishi-primary text-krishi-primary hover:bg-krishi-primary hover:text-white">
-                    Logout
-                  </Button>
+                  <>
+                    <Button onClick={handleLogout} variant="outline" className="border-krishi-primary text-krishi-primary hover:bg-krishi-primary hover:text-white">
+                      Logout
+                    </Button>
+                    
+                    {/* Language Selector for logged in users */}
+                    <div className="relative ml-3">
+                      <button 
+                        onClick={toggleLanguageDropdown}
+                        className="flex items-center space-x-2 text-krishi-primary bg-krishi-accent px-3 py-1 rounded"
+                      >
+                        <Globe size={16} />
+                        <span className="text-sm hidden md:inline">{language === 'english' ? 'English' : 'ಕನ್ನಡ'}</span>
+                        <ChevronDown size={16} />
+                      </button>
+                      
+                      {isLanguageDropdownOpen && (
+                        <div className="language-dropdown animate-fade-in">
+                          <div 
+                            className={`language-option ${language === 'english' ? 'bg-krishi-accent text-krishi-primary' : ''}`}
+                            onClick={() => handleLanguageChange('english')}
+                          >
+                            English
+                          </div>
+                          <div 
+                            className={`language-option ${language === 'kannada' ? 'bg-krishi-accent text-krishi-primary' : ''}`}
+                            onClick={() => handleLanguageChange('kannada')}
+                          >
+                            ಕನ್ನಡ
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </>
                 )}
               </div>
             </nav>
@@ -124,7 +155,7 @@ const Header: React.FC = () => {
               {t('about')}
             </Link>
             
-            <div className="mt-4 flex flex-col space-y-3">
+            <div className="mt-4 space-y-3">
               {!user ? (
                 <>
                   <Button asChild variant="outline" className="w-full border-krishi-primary text-krishi-primary hover:bg-krishi-primary hover:text-white">
@@ -133,11 +164,49 @@ const Header: React.FC = () => {
                   <Button asChild className="w-full bg-krishi-primary hover:bg-krishi-dark text-white">
                     <Link to="/signup" onClick={() => setIsMenuOpen(false)}>{t('signup')}</Link>
                   </Button>
+                  {/* Language selector in mobile menu */}
+                  <div className="flex items-center justify-between py-3 border-t border-krishi-border">
+                    <span className="text-krishi-primary font-medium">Language</span>
+                    <div className="flex space-x-2">
+                      <button 
+                        className={`px-3 py-1 rounded ${language === 'english' ? 'bg-krishi-accent text-krishi-primary' : 'bg-gray-100'}`}
+                        onClick={() => handleLanguageChange('english')}
+                      >
+                        English
+                      </button>
+                      <button 
+                        className={`px-3 py-1 rounded ${language === 'kannada' ? 'bg-krishi-accent text-krishi-primary' : 'bg-gray-100'}`}
+                        onClick={() => handleLanguageChange('kannada')}
+                      >
+                        ಕನ್ನಡ
+                      </button>
+                    </div>
+                  </div>
                 </>
               ) : (
-                <Button onClick={() => { handleLogout(); setIsMenuOpen(false); }} variant="outline" className="w-full border-krishi-primary text-krishi-primary hover:bg-krishi-primary hover:text-white">
-                  Logout
-                </Button>
+                <>
+                  <Button onClick={() => { handleLogout(); setIsMenuOpen(false); }} variant="outline" className="w-full border-krishi-primary text-krishi-primary hover:bg-krishi-primary hover:text-white">
+                    Logout
+                  </Button>
+                  {/* Language selector in mobile menu for logged in users */}
+                  <div className="flex items-center justify-between py-3 border-t border-krishi-border">
+                    <span className="text-krishi-primary font-medium">Language</span>
+                    <div className="flex space-x-2">
+                      <button 
+                        className={`px-3 py-1 rounded ${language === 'english' ? 'bg-krishi-accent text-krishi-primary' : 'bg-gray-100'}`}
+                        onClick={() => handleLanguageChange('english')}
+                      >
+                        English
+                      </button>
+                      <button 
+                        className={`px-3 py-1 rounded ${language === 'kannada' ? 'bg-krishi-accent text-krishi-primary' : 'bg-gray-100'}`}
+                        onClick={() => handleLanguageChange('kannada')}
+                      >
+                        ಕನ್ನಡ
+                      </button>
+                    </div>
+                  </div>
+                </>
               )}
             </div>
           </nav>
