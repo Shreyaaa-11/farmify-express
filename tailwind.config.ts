@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,7 +62,16 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+                krishi: {
+                    primary: '#1b8a4c',
+                    secondary: '#16703e',
+                    accent: '#e0f2e9',
+                    light: '#f5fff9',
+                    dark: '#0c5a2f',
+                    muted: '#a3d9b9',
+                    border: '#d1efe0',
+                }
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -84,12 +94,45 @@ export default {
 					to: {
 						height: '0'
 					}
-				}
+				},
+                fadeIn: {
+                    '0%': { opacity: '0' },
+                    '100%': { opacity: '1' }
+                },
+                slideInRight: {
+                    '0%': { transform: 'translateX(100%)' },
+                    '100%': { transform: 'translateX(0)' }
+                },
+                slideInLeft: {
+                    '0%': { transform: 'translateX(-100%)' },
+                    '100%': { transform: 'translateX(0)' }
+                },
+                slideInUp: {
+                    '0%': { transform: 'translateY(100%)' },
+                    '100%': { transform: 'translateY(0)' }
+                },
+                pulse: {
+                    '0%, 100%': { opacity: '1' },
+                    '50%': { opacity: '0.5' }
+                }
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
-			}
+				'accordion-up': 'accordion-up 0.2s ease-out',
+                'fade-in': 'fadeIn 0.6s ease-out',
+                'slide-in-right': 'slideInRight 0.5s ease-out',
+                'slide-in-left': 'slideInLeft 0.5s ease-out',
+                'slide-in-up': 'slideInUp 0.5s ease-out',
+                'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+			},
+            fontFamily: {
+                sans: ['Poppins', 'sans-serif'],
+                heading: ['Playfair Display', 'serif'],
+            },
+            backgroundImage: {
+                'hero-pattern': "url('/public/lovable-uploads/40ffc290-2562-41e7-beb1-2e4f20318caf.png')",
+                'green-gradient': 'linear-gradient(to right, #1b8a4c, #16703e)',
+            }
 		}
 	},
 	plugins: [require("tailwindcss-animate")],
