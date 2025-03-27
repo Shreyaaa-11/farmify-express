@@ -83,7 +83,7 @@
 
 @layer components {
   .hero-section {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/lovable-uploads/40ffc290-2562-41e7-beb1-2e4f20318caf.png');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1625246333195-78d9c38ad449?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb');
     background-size: cover;
     background-position: center;
   }

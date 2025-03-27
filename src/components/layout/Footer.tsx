@@ -14,10 +14,10 @@ const Footer: React.FC = () => {
           {/* Logo & Description */}
           <div className="flex flex-col items-center md:items-start">
             <div className="flex items-center space-x-3 mb-4">
-              <img src="/lovable-uploads/0142a83e-bd17-43e1-891b-424264eaa72d.png" alt="Krishi Sadhan" className="h-16 bg-white rounded-full p-1" />
+              <img src="https://images.unsplash.com/photo-1585148870686-c10872bf09ef?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=50" alt="Farmwise" className="h-16 bg-white rounded-full p-1" />
               <div>
-                <h3 className="font-bold text-xl">Krishi Sadhan</h3>
-                <p className="text-xs">Kisaan upkaran ka ek Matra Sadhan.</p>
+                <h3 className="font-bold text-xl">Farmwise</h3>
+                <p className="text-xs">Your farming equipment partner.</p>
               </div>
             </div>
           </div>
@@ -54,10 +54,10 @@ const Footer: React.FC = () => {
                 <Twitter size={28} />
               </a>
             </div>
-            <p className="mb-4">Made by: Team Krishi Sadhan</p>
+            <p className="mb-4">Made by: Team Farmwise</p>
             
             <div className="flex items-center mt-auto">
-              <img src="/lovable-uploads/7a1cd545-5d2b-4e2e-938e-3bda30eca53d.png" alt="Ministry Logo" className="h-12 mr-4" />
+              <img src="https://images.unsplash.com/photo-1516820208784-270b250306aa?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=40" alt="Ministry Logo" className="h-12 mr-4" />
               <div>
                 <p className="text-sm">Ministry of Skill Development and Entrepreneurship</p>
               </div>
@@ -66,7 +66,7 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="border-t border-krishi-secondary mt-8 pt-8 text-center">
-          <p>&copy; {new Date().getFullYear()} Krishi Sadhan. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Farmwise. All rights reserved.</p>
         </div>
       </div>
     </footer>

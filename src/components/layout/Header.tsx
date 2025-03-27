@@ -32,7 +32,7 @@ const Header: React.FC = () => {
       {/* Top bar with ministry name and language selector */}
       <div className="bg-krishi-primary py-2 px-4 md:px-8 flex justify-between items-center">
         <div className="flex items-center space-x-2 text-white">
-          <img src="/lovable-uploads/7a1cd545-5d2b-4e2e-938e-3bda30eca53d.png" alt="Emblem" className="h-8" />
+          <img src="https://images.unsplash.com/photo-1516820208784-270b250306aa?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=40" alt="Emblem" className="h-8" />
           <span className="text-sm md:text-base font-medium">Ministry of Skill Development and Entrepreneurship</span>
         </div>
         <div className="relative">
@@ -69,10 +69,10 @@ const Header: React.FC = () => {
         <div className="container mx-auto flex justify-between items-center">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">
-            <img src="/lovable-uploads/0142a83e-bd17-43e1-891b-424264eaa72d.png" alt="Krishi Sadhan" className="h-12" />
+            <img src="https://images.unsplash.com/photo-1585148870686-c10872bf09ef?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=50" alt="Farmwise" className="h-12" />
             <div className="text-krishi-primary">
-              <h1 className="font-bold text-xl">Krishi Sadhan</h1>
-              <p className="text-xs text-krishi-secondary">Kisaan upkaran ka ek Matra Sadhan</p>
+              <h1 className="font-bold text-xl">Farmwise</h1>
+              <p className="text-xs text-krishi-secondary">Your farming equipment partner</p>
             </div>
           </Link>
 
