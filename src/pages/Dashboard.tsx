@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Calendar, Package, CreditCard, Settings, Clock, Tractor, ShoppingBag } from 'lucide-react';
@@ -9,7 +8,6 @@ import { Equipment, getEquipment } from '../services/database';
 import { Button } from '../components/ui/button';
 import { motion } from 'framer-motion';
 
-// Mock data for rentals and purchases
 interface Rental {
   id: string;
   equipmentId: string;
@@ -31,7 +29,7 @@ interface Purchase {
 }
 
 const Dashboard = () => {
-  const { user } = useAuth();
+  const { user, profile } = useAuth();
   const navigate = useNavigate();
   
   const [activeTab, setActiveTab] = useState<'rentals' | 'purchases' | 'payments' | 'settings'>('rentals');
@@ -41,7 +39,6 @@ const Dashboard = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Redirect to login if not authenticated
     if (!user) {
       toast({
         title: "Authentication required",
@@ -55,13 +52,10 @@ const Dashboard = () => {
       try {
         setIsLoading(true);
         
-        // Load equipment for recently viewed
         const allEquipment = await getEquipment();
-        // Randomly select a few equipment items to simulate recently viewed
         const randomEquipment = [...allEquipment].sort(() => 0.5 - Math.random()).slice(0, 3);
         setRecentlyViewed(randomEquipment);
         
-        // Mock rentals data
         const mockRentals: Rental[] = [
           {
             id: '1',
@@ -93,7 +87,6 @@ const Dashboard = () => {
         ];
         setRentals(mockRentals);
         
-        // Mock purchases data
         const mockPurchases: Purchase[] = [
           {
             id: '1',
@@ -327,7 +320,7 @@ const Dashboard = () => {
               <input 
                 type="text" 
                 className="w-full px-4 py-2 border border-gray-300 rounded-md" 
-                value={user?.name || 'User'}
+                value={profile?.full_name || 'User'}
                 readOnly
               />
             </div>
@@ -346,6 +339,8 @@ const Dashboard = () => {
                 type="tel" 
                 className="w-full px-4 py-2 border border-gray-300 rounded-md" 
                 placeholder="Add phone number"
+                value={profile?.phone || ''}
+                readOnly
               />
             </div>
             <div>
@@ -354,6 +349,8 @@ const Dashboard = () => {
                 type="text" 
                 className="w-full px-4 py-2 border border-gray-300 rounded-md" 
                 placeholder="Add address"
+                value={profile?.address || ''}
+                readOnly
               />
             </div>
           </div>
@@ -383,13 +380,11 @@ const Dashboard = () => {
         </div>
       ) : (
         <div className="container mx-auto px-4 py-12">
-          {/* Dashboard Header */}
           <div className="mb-8">
-            <h1 className="text-2xl md:text-3xl font-bold mb-2">Welcome, {user?.name || 'Farmer'}</h1>
+            <h1 className="text-2xl md:text-3xl font-bold mb-2">Welcome, {profile?.full_name || user?.email?.split('@')[0] || 'Farmer'}</h1>
             <p className="text-gray-600">Manage your equipment rentals, purchases, and account settings</p>
           </div>
           
-          {/* Dashboard Tabs */}
           <div className="mb-8 border-b border-gray-200">
             <nav className="flex -mb-px">
               <button
@@ -447,7 +442,6 @@ const Dashboard = () => {
             </nav>
           </div>
           
-          {/* Tab Content */}
           <div className="mb-8">
             {activeTab === 'rentals' && renderRentalsTab()}
             {activeTab === 'purchases' && renderPurchasesTab()}
@@ -455,7 +449,6 @@ const Dashboard = () => {
             {activeTab === 'settings' && renderSettingsTab()}
           </div>
           
-          {/* Recently Viewed */}
           {(activeTab === 'rentals' || activeTab === 'purchases') && (
             <div>
               <h2 className="text-xl font-bold mb-4">Recently Viewed</h2>
