@@ -112,9 +112,9 @@ const Signup = () => {
         >
           <div className="text-center mb-8">
             <Link to="/" className="inline-block">
-              <img src="/lovable-uploads/0142a83e-bd17-43e1-891b-424264eaa72d.png" alt="Krishi Sadhan" className="h-16 mx-auto" />
+              <img src="/lovable-uploads/0142a83e-bd17-43e1-891b-424264eaa72d.png" alt="Logo" className="h-16 mx-auto" />
             </Link>
-            <h1 className="text-2xl font-bold mt-4 text-gray-800">Create a Krishi Sadhan account</h1>
+            <h1 className="text-2xl font-bold mt-4 text-gray-800">Create an account</h1>
             <p className="text-gray-600 mt-2">Join the community of modern farmers</p>
           </div>
           
@@ -267,7 +267,7 @@ const Signup = () => {
         <div className="h-full w-full bg-cover bg-center" style={{ backgroundImage: `url('/lovable-uploads/40ffc290-2562-41e7-beb1-2e4f20318caf.png')` }}>
           <div className="h-full w-full bg-krishi-primary bg-opacity-80 flex items-center p-12">
             <div className="max-w-lg">
-              <h2 className="text-3xl font-bold mb-6 text-white">Benefits of joining Krishi Sadhan</h2>
+              <h2 className="text-3xl font-bold mb-6 text-white">Benefits of joining</h2>
               <ul className="space-y-4">
                 <li className="flex items-start">
                   <CheckCircle className="text-white mr-3 mt-1" size={20} />

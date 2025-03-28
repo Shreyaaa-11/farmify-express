@@ -63,9 +63,9 @@ const Login = () => {
         >
           <div className="text-center mb-8">
             <Link to="/" className="inline-block">
-              <img src="/lovable-uploads/0142a83e-bd17-43e1-891b-424264eaa72d.png" alt="Krishi Sadhan" className="h-16 mx-auto" />
+              <img src="/lovable-uploads/0142a83e-bd17-43e1-891b-424264eaa72d.png" alt="Logo" className="h-16 mx-auto" />
             </Link>
-            <h1 className="text-2xl font-bold mt-4 text-gray-800">Welcome back to Krishi Sadhan</h1>
+            <h1 className="text-2xl font-bold mt-4 text-gray-800">Welcome back</h1>
             <p className="text-gray-600 mt-2">Please sign in to your account</p>
           </div>
           
@@ -147,12 +147,12 @@ const Login = () => {
           <div className="h-full w-full bg-krishi-primary bg-opacity-80 flex items-center justify-center text-white p-12">
             <div className="max-w-md">
               <h2 className="text-3xl font-bold mb-6">Access the best farming equipment</h2>
-              <p className="text-lg mb-8">Join thousands of farmers who have revolutionized their farming practices with Krishi Sadhan.</p>
+              <p className="text-lg mb-8">Join thousands of farmers who have revolutionized their farming practices.</p>
               <div className="flex items-center space-x-4">
                 <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
                   <img src="/lovable-uploads/0142a83e-bd17-43e1-891b-424264eaa72d.png" alt="Logo" className="h-8" />
                 </div>
-                <p className="text-lg font-medium">Krishi Sadhan</p>
+                <p className="text-lg font-medium">Farmwise</p>
               </div>
             </div>
           </div>

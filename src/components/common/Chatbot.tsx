@@ -95,7 +95,7 @@ const Chatbot: React.FC = () => {
       {isOpen && (
         <div className="chatbot-panel animate-fade-in">
           <div className="chatbot-header">
-            <h3 className="font-medium">Krishi Sadhan Assistant</h3>
+            <h3 className="font-medium">Farming Assistant</h3>
             <button onClick={toggleChatbot} className="text-white hover:text-gray-200">
               <X size={18} />
             </button>
