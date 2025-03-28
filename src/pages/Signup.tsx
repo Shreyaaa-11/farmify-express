@@ -101,199 +101,163 @@ const Signup = () => {
   };
 
   return (
-    <div className="min-h-screen flex">
-      {/* Left side - Signup Form */}
-      <div className="w-full lg:w-1/2 flex justify-center items-center p-8">
-        <motion.div 
-          className="w-full max-w-md"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <div className="text-center mb-8">
-            <Link to="/" className="inline-block">
-              <img src="/lovable-uploads/0142a83e-bd17-43e1-891b-424264eaa72d.png" alt="Logo" className="h-16 mx-auto" />
-            </Link>
-            <h1 className="text-2xl font-bold mt-4 text-gray-800">Create an account</h1>
-            <p className="text-gray-600 mt-2">Join the community of modern farmers</p>
-          </div>
-          
-          <div className="mb-8">
-            <div className="flex items-center">
-              <div className={`w-10 h-10 rounded-full flex items-center justify-center ${step >= 1 ? 'bg-krishi-primary text-white' : 'bg-gray-200 text-gray-500'}`}>
-                1
-              </div>
-              <div className={`flex-1 h-1 mx-2 ${step >= 2 ? 'bg-krishi-primary' : 'bg-gray-200'}`}></div>
-              <div className={`w-10 h-10 rounded-full flex items-center justify-center ${step >= 2 ? 'bg-krishi-primary text-white' : 'bg-gray-200 text-gray-500'}`}>
-                2
-              </div>
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
+      <motion.div 
+        className="w-full max-w-md bg-white p-8 rounded-lg shadow-lg"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <div className="text-center mb-8">
+          <Link to="/" className="inline-block">
+            <img src="/lovable-uploads/0142a83e-bd17-43e1-891b-424264eaa72d.png" alt="Logo" className="h-16 mx-auto" />
+          </Link>
+          <h1 className="text-2xl font-bold mt-4 text-gray-800">Create an account</h1>
+          <p className="text-gray-600 mt-2">Join the community of modern farmers</p>
+        </div>
+        
+        <div className="mb-8">
+          <div className="flex items-center">
+            <div className={`w-10 h-10 rounded-full flex items-center justify-center ${step >= 1 ? 'bg-krishi-primary text-white' : 'bg-gray-200 text-gray-500'}`}>
+              1
             </div>
-            <div className="flex justify-between mt-2 text-sm">
-              <span className={step >= 1 ? 'text-krishi-primary font-medium' : 'text-gray-500'}>Personal Info</span>
-              <span className={step >= 2 ? 'text-krishi-primary font-medium' : 'text-gray-500'}>Account Security</span>
+            <div className={`flex-1 h-1 mx-2 ${step >= 2 ? 'bg-krishi-primary' : 'bg-gray-200'}`}></div>
+            <div className={`w-10 h-10 rounded-full flex items-center justify-center ${step >= 2 ? 'bg-krishi-primary text-white' : 'bg-gray-200 text-gray-500'}`}>
+              2
             </div>
           </div>
-          
-          {step === 1 ? (
-            <form onSubmit={(e) => { e.preventDefault(); handleNextStep(); }} className="space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">{t('name')}</label>
-                <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <User size={18} className="text-gray-400" />
-                  </div>
-                  <input
-                    id="name"
-                    type="text"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    className="pl-10 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-krishi-primary"
-                    placeholder="Enter your name"
-                    required
-                  />
-                </div>
-              </div>
-              
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">{t('email')}</label>
-                <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <Mail size={18} className="text-gray-400" />
-                  </div>
-                  <input
-                    id="email"
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="pl-10 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-krishi-primary"
-                    placeholder="Enter your email"
-                    required
-                  />
-                </div>
-              </div>
-              
-              <Button 
-                type="submit" 
-                className="w-full bg-krishi-primary hover:bg-krishi-dark text-white"
-              >
-                Continue
-              </Button>
-            </form>
-          ) : (
-            <form onSubmit={handleSignup} className="space-y-6">
-              <div>
-                <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">{t('password')}</label>
-                <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <Lock size={18} className="text-gray-400" />
-                  </div>
-                  <input
-                    id="password"
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    className="pl-10 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-krishi-primary"
-                    placeholder="Create a password"
-                    required
-                  />
-                </div>
-                <div className="mt-1 flex items-center">
-                  <CheckCircle size={14} className={password.length >= 6 ? 'text-green-500' : 'text-gray-300'} />
-                  <span className="ml-2 text-xs text-gray-500">At least 6 characters</span>
-                </div>
-              </div>
-              
-              <div>
-                <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-1">{t('confirmPassword')}</label>
-                <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <Lock size={18} className="text-gray-400" />
-                  </div>
-                  <input
-                    id="confirmPassword"
-                    type="password"
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                    className="pl-10 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-krishi-primary"
-                    placeholder="Confirm your password"
-                    required
-                  />
-                </div>
-                {confirmPassword && (
-                  <div className="mt-1 flex items-center">
-                    <CheckCircle size={14} className={password === confirmPassword ? 'text-green-500' : 'text-red-500'} />
-                    <span className="ml-2 text-xs text-gray-500">Passwords {password === confirmPassword ? 'match' : 'do not match'}</span>
-                  </div>
-                )}
-              </div>
-              
-              <div className="flex space-x-4">
-                <Button 
-                  type="button" 
-                  variant="outline"
-                  className="flex-1"
-                  onClick={() => setStep(1)}
-                >
-                  Back
-                </Button>
-                <Button 
-                  type="submit" 
-                  className="flex-1 bg-krishi-primary hover:bg-krishi-dark text-white"
-                  disabled={isLoading}
-                >
-                  {isLoading ? (
-                    <div className="flex items-center justify-center">
-                      <Loader size={16} className="animate-spin mr-2" />
-                      Creating account...
-                    </div>
-                  ) : (
-                    t('signup')
-                  )}
-                </Button>
-              </div>
-            </form>
-          )}
-          
-          <div className="mt-8 text-center">
-            <p className="text-gray-600">
-              {t('alreadyHaveAccount')} <Link to="/login" className="text-krishi-primary hover:text-krishi-dark font-medium">{t('login')}</Link>
-            </p>
-          </div>
-        </motion.div>
-      </div>
-      
-      {/* Right side - Image */}
-      <div className="hidden lg:block lg:w-1/2 bg-krishi-primary">
-        <div className="h-full w-full bg-cover bg-center" style={{ backgroundImage: `url('/lovable-uploads/40ffc290-2562-41e7-beb1-2e4f20318caf.png')` }}>
-          <div className="h-full w-full bg-krishi-primary bg-opacity-80 flex items-center p-12">
-            <div className="max-w-lg">
-              <h2 className="text-3xl font-bold mb-6 text-white">Benefits of joining</h2>
-              <ul className="space-y-4">
-                <li className="flex items-start">
-                  <CheckCircle className="text-white mr-3 mt-1" size={20} />
-                  <span className="text-white">Access to a wide range of farming equipment for rent or purchase</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="text-white mr-3 mt-1" size={20} />
-                  <span className="text-white">Reduce capital costs and improve farm productivity</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="text-white mr-3 mt-1" size={20} />
-                  <span className="text-white">Connect with trusted equipment owners and service providers</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="text-white mr-3 mt-1" size={20} />
-                  <span className="text-white">Track your rentals and purchases in one convenient dashboard</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="text-white mr-3 mt-1" size={20} />
-                  <span className="text-white">Access to expert farming advice and community knowledge</span>
-                </li>
-              </ul>
-            </div>
+          <div className="flex justify-between mt-2 text-sm">
+            <span className={step >= 1 ? 'text-krishi-primary font-medium' : 'text-gray-500'}>Personal Info</span>
+            <span className={step >= 2 ? 'text-krishi-primary font-medium' : 'text-gray-500'}>Account Security</span>
           </div>
         </div>
-      </div>
+        
+        {step === 1 ? (
+          <form onSubmit={(e) => { e.preventDefault(); handleNextStep(); }} className="space-y-6">
+            <div>
+              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">{t('name')}</label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <User size={18} className="text-gray-400" />
+                </div>
+                <input
+                  id="name"
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className="pl-10 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-krishi-primary"
+                  placeholder="Enter your name"
+                  required
+                />
+              </div>
+            </div>
+            
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">{t('email')}</label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <Mail size={18} className="text-gray-400" />
+                </div>
+                <input
+                  id="email"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="pl-10 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-krishi-primary"
+                  placeholder="Enter your email"
+                  required
+                />
+              </div>
+            </div>
+            
+            <Button 
+              type="submit" 
+              className="w-full bg-krishi-primary hover:bg-krishi-dark text-white"
+            >
+              Continue
+            </Button>
+          </form>
+        ) : (
+          <form onSubmit={handleSignup} className="space-y-6">
+            <div>
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">{t('password')}</label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <Lock size={18} className="text-gray-400" />
+                </div>
+                <input
+                  id="password"
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="pl-10 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-krishi-primary"
+                  placeholder="Create a password"
+                  required
+                />
+              </div>
+              <div className="mt-1 flex items-center">
+                <CheckCircle size={14} className={password.length >= 6 ? 'text-green-500' : 'text-gray-300'} />
+                <span className="ml-2 text-xs text-gray-500">At least 6 characters</span>
+              </div>
+            </div>
+            
+            <div>
+              <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-1">{t('confirmPassword')}</label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <Lock size={18} className="text-gray-400" />
+                </div>
+                <input
+                  id="confirmPassword"
+                  type="password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  className="pl-10 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-krishi-primary"
+                  placeholder="Confirm your password"
+                  required
+                />
+              </div>
+              {confirmPassword && (
+                <div className="mt-1 flex items-center">
+                  <CheckCircle size={14} className={password === confirmPassword ? 'text-green-500' : 'text-red-500'} />
+                  <span className="ml-2 text-xs text-gray-500">Passwords {password === confirmPassword ? 'match' : 'do not match'}</span>
+                </div>
+              )}
+            </div>
+            
+            <div className="flex space-x-4">
+              <Button 
+                type="button" 
+                variant="outline"
+                className="flex-1"
+                onClick={() => setStep(1)}
+              >
+                Back
+              </Button>
+              <Button 
+                type="submit" 
+                className="flex-1 bg-krishi-primary hover:bg-krishi-dark text-white"
+                disabled={isLoading}
+              >
+                {isLoading ? (
+                  <div className="flex items-center justify-center">
+                    <Loader size={16} className="animate-spin mr-2" />
+                    Creating account...
+                  </div>
+                ) : (
+                  t('signup')
+                )}
+              </Button>
+            </div>
+          </form>
+        )}
+        
+        <div className="mt-8 text-center">
+          <p className="text-gray-600">
+            {t('alreadyHaveAccount')} <Link to="/login" className="text-krishi-primary hover:text-krishi-dark font-medium">{t('login')}</Link>
+          </p>
+        </div>
+      </motion.div>
     </div>
   );
 };
