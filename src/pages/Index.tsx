@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Headphones, Users, Clock } from 'lucide-react';
@@ -166,106 +165,80 @@ const Index = () => {
         </div>
       </section>
 
-      {/* How It Works Section */}
+      {/* How It Works Section - Updated without image */}
       <section className="py-16 bg-krishi-primary text-white">
         <div className="container mx-auto px-4 md:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">{t('howItWorks')}</h2>
-            <p className="text-lg">TAKE A LOOK AT OUR PLATFORM DEMO</p>
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">How It Works</h2>
+            <p className="text-lg">PLATFORM GUIDE</p>
           </div>
 
-          <div className="flex flex-col md:flex-row">
-            <div className="md:w-1/2 p-4">
-              <ol className="space-y-8">
-                <motion.li 
-                  className="flex items-start"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.2 }}
-                >
-                  <div className="bg-white text-krishi-primary rounded-full w-8 h-8 flex items-center justify-center font-bold mr-4">1</div>
-                  <div>
-                    <h3 className="text-xl font-bold">{t('signUpPlatform')}</h3>
-                  </div>
-                </motion.li>
-                <motion.li 
-                  className="flex items-start"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.3 }}
-                >
-                  <div className="bg-white text-krishi-primary rounded-full w-8 h-8 flex items-center justify-center font-bold mr-4">2</div>
-                  <div>
-                    <h3 className="text-xl font-bold">{t('postAd')}</h3>
-                  </div>
-                </motion.li>
-                <motion.li 
-                  className="flex items-start"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.4 }}
-                >
-                  <div className="bg-white text-krishi-primary rounded-full w-8 h-8 flex items-center justify-center font-bold mr-4">3</div>
-                  <div>
-                    <h3 className="text-xl font-bold">{t('provideDetails')}</h3>
-                  </div>
-                </motion.li>
-                <motion.li 
-                  className="flex items-start"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.5 }}
-                >
-                  <div className="bg-white text-krishi-primary rounded-full w-8 h-8 flex items-center justify-center font-bold mr-4">4</div>
-                  <div>
-                    <h3 className="text-xl font-bold">{t('exploreFilter')}</h3>
-                  </div>
-                </motion.li>
-                <motion.li 
-                  className="flex items-start"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.6 }}
-                >
-                  <div className="bg-white text-krishi-primary rounded-full w-8 h-8 flex items-center justify-center font-bold mr-4">5</div>
-                  <div>
-                    <h3 className="text-xl font-bold">{t('checkAvailability')}</h3>
-                  </div>
-                </motion.li>
-                <motion.li 
-                  className="flex items-start"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.7 }}
-                >
-                  <div className="bg-white text-krishi-primary rounded-full w-8 h-8 flex items-center justify-center font-bold mr-4">6</div>
-                  <div>
-                    <h3 className="text-xl font-bold">{t('chatOwner')}</h3>
-                  </div>
-                </motion.li>
-                <motion.li 
-                  className="flex items-start"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.8 }}
-                >
-                  <div className="bg-white text-krishi-primary rounded-full w-8 h-8 flex items-center justify-center font-bold mr-4">7</div>
-                  <div>
-                    <h3 className="text-xl font-bold">{t('stayUpdated')}</h3>
-                  </div>
-                </motion.li>
-              </ol>
-            </div>
-            <div className="md:w-1/2 p-4 mt-8 md:mt-0 flex justify-center">
-              <motion.img 
-                src="/lovable-uploads/7a1cd545-5d2b-4e2e-938e-3bda30eca53d.png" 
-                alt="Platform Demo" 
-                className="max-w-full h-auto rounded-xl border-8 border-white shadow-2xl"
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5 }}
-              />
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <motion.div 
+              className="bg-white/10 p-6 rounded-lg"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+            >
+              <div className="bg-white text-krishi-primary rounded-full w-10 h-10 flex items-center justify-center font-bold mb-4">1</div>
+              <h3 className="text-xl font-bold mb-2">Sign up</h3>
+              <p>Create your account in seconds and join our community of farmers</p>
+            </motion.div>
+            
+            <motion.div 
+              className="bg-white/10 p-6 rounded-lg"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+            >
+              <div className="bg-white text-krishi-primary rounded-full w-10 h-10 flex items-center justify-center font-bold mb-4">2</div>
+              <h3 className="text-xl font-bold mb-2">Explore equipment</h3>
+              <p>Browse through our extensive catalog of farming equipment</p>
+            </motion.div>
+            
+            <motion.div 
+              className="bg-white/10 p-6 rounded-lg"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+            >
+              <div className="bg-white text-krishi-primary rounded-full w-10 h-10 flex items-center justify-center font-bold mb-4">3</div>
+              <h3 className="text-xl font-bold mb-2">Contact owner</h3>
+              <p>Connect directly with equipment owners to discuss details</p>
+            </motion.div>
+            
+            <motion.div 
+              className="bg-white/10 p-6 rounded-lg"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+            >
+              <div className="bg-white text-krishi-primary rounded-full w-10 h-10 flex items-center justify-center font-bold mb-4">4</div>
+              <h3 className="text-xl font-bold mb-2">Book equipment</h3>
+              <p>Select dates and reserve the equipment you need with a few clicks</p>
+            </motion.div>
+            
+            <motion.div 
+              className="bg-white/10 p-6 rounded-lg"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+            >
+              <div className="bg-white text-krishi-primary rounded-full w-10 h-10 flex items-center justify-center font-bold mb-4">5</div>
+              <h3 className="text-xl font-bold mb-2">Secure payment</h3>
+              <p>Pay securely through our platform with various payment options</p>
+            </motion.div>
+            
+            <motion.div 
+              className="bg-white/10 p-6 rounded-lg"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7 }}
+            >
+              <div className="bg-white text-krishi-primary rounded-full w-10 h-10 flex items-center justify-center font-bold mb-4">6</div>
+              <h3 className="text-xl font-bold mb-2">Start farming</h3>
+              <p>Receive the equipment and start improving your agricultural output</p>
+            </motion.div>
           </div>
         </div>
       </section>
