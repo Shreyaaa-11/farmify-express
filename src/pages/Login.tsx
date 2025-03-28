@@ -60,9 +60,6 @@ const Login = () => {
         transition={{ duration: 0.5 }}
       >
         <div className="text-center mb-8">
-          <Link to="/" className="inline-block">
-            <img src="/lovable-uploads/0142a83e-bd17-43e1-891b-424264eaa72d.png" alt="Logo" className="h-16 mx-auto" />
-          </Link>
           <h1 className="text-2xl font-bold mt-4 text-gray-800">Welcome back</h1>
           <p className="text-gray-600 mt-2">Please sign in to your account</p>
           <div className="mt-2 p-2 bg-blue-50 rounded-md text-sm text-blue-700">

@@ -109,9 +109,6 @@ const Signup = () => {
         transition={{ duration: 0.5 }}
       >
         <div className="text-center mb-8">
-          <Link to="/" className="inline-block">
-            <img src="/lovable-uploads/0142a83e-bd17-43e1-891b-424264eaa72d.png" alt="Logo" className="h-16 mx-auto" />
-          </Link>
           <h1 className="text-2xl font-bold mt-4 text-gray-800">Create an account</h1>
           <p className="text-gray-600 mt-2">Join the community of modern farmers</p>
         </div>
