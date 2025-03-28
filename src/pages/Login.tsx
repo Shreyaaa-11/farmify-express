@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Mail, Lock, Loader } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -7,6 +7,7 @@ import { useAuth } from '../contexts/AuthContext';
 import { toast } from '../components/ui/use-toast';
 import { Button } from '../components/ui/button';
 import { motion } from 'framer-motion';
+import { supabase } from '../integrations/supabase/client';
 
 const Login = () => {
   const { t } = useLanguage();
@@ -18,9 +19,23 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [authError, setAuthError] = useState<string | null>(null);
+
+  // Check if there's an existing session on component mount
+  useEffect(() => {
+    const checkSession = async () => {
+      const { data } = await supabase.auth.getSession();
+      if (data.session) {
+        navigate(from);
+      }
+    };
+    
+    checkSession();
+  }, [navigate, from]);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
+    setAuthError(null);
     
     if (!email || !password) {
       toast({
@@ -33,13 +48,28 @@ const Login = () => {
     
     try {
       setIsLoading(true);
-      await signIn(email, password);
+      const { error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+      
+      if (error) {
+        console.error('Login error:', error);
+        setAuthError(error.message);
+        toast({
+          title: "Error",
+          description: error.message || "Failed to log in. Please check your credentials and try again.",
+          variant: "destructive",
+        });
+        return;
+      }
+      
       toast({
         title: "Success",
         description: "You have been logged in successfully",
       });
       navigate(from);
-    } catch (error) {
+    } catch (error: any) {
       console.error('Login error:', error);
       toast({
         title: "Error",
@@ -68,6 +98,12 @@ const Login = () => {
             <p>Password: password123</p>
           </div>
         </div>
+        
+        {authError && (
+          <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-md text-red-700 text-sm">
+            {authError}
+          </div>
+        )}
         
         <form onSubmit={handleLogin} className="space-y-6">
           <div>
